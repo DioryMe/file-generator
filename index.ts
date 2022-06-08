@@ -93,4 +93,4 @@ class Generator {
   }
 }
 
-export { dioryImageGenerator, dioryVideoGenerator, Generator }
+export { dioryImageGenerator, dioryVideoGenerator, Generator, getDefaultImage }
