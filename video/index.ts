@@ -2,10 +2,7 @@ import { generateThumbnail } from './thumbnailer'
 import { parseFfmpegOutput } from './parse-ffmpeg-output'
 import { DioryGeneratorData } from 'diograph-js'
 
-async function dioryVideoGenerator(
-  filePath: string,
-  contentUrl: string,
-): Promise<DioryGeneratorData> {
+async function dioryVideoGenerator(filePath: string, cid: string): Promise<DioryGeneratorData> {
   const { thumbnailBuffer, ffmpegOutput } = await generateThumbnail(filePath)
   const { date, latlng, duration } = parseFfmpegOutput(ffmpegOutput)
 
@@ -16,14 +13,15 @@ async function dioryVideoGenerator(
       {
         '@context': 'https://schema.org',
         '@type': 'VideoObject',
-        contentUrl,
+        contentUrl: cid,
+        cid,
         ...(duration && { duration }),
         encodingFormat: '',
       },
     ],
   }
 
-  return { typeSpecificDiory, thumbnailBuffer, cid: 'sadfasdf' }
+  return { typeSpecificDiory, thumbnailBuffer, cid }
 }
 
 export { dioryVideoGenerator }

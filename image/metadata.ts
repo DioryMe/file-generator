@@ -38,17 +38,18 @@ function getLatLng({ GPSLatitude = {}, GPSLongitude = {} }: any) {
   return latitude && longitude && { latlng: `${latitude}, ${longitude}` }
 }
 
-async function generateSchema(tags: any, contentUrl: string) {
+async function generateSchema(tags: any, cid: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ImageObject',
-    contentUrl,
+    contentUrl: cid,
+    cid,
     height: tags && tags['Image Height'] && tags['Image Height'].value,
     width: tags && tags['Image Width'] && tags['Image Width'].value,
   }
 }
 
-async function retrieveMetadata(imagePath: string, contentUrl: string, encodingFormat: string) {
+async function retrieveMetadata(imagePath: string, cid: string, encodingFormat: string) {
   if (!imagePath) {
     return
   }
@@ -61,7 +62,7 @@ async function retrieveMetadata(imagePath: string, contentUrl: string, encodingF
       ...getCreated(tags),
       data: [
         {
-          ...(await generateSchema(tags, contentUrl)),
+          ...(await generateSchema(tags, cid)),
           ...{ encodingFormat },
         },
       ],

@@ -1,3 +1,7 @@
+import { CID } from 'multiformats/cid'
+import * as raw from 'multiformats/codecs/raw'
+import { sha256 } from 'multiformats/hashes/sha2'
+
 import { dioryImageGenerator } from './image'
 import { dioryVideoGenerator } from './video'
 import { statSync } from 'fs'
@@ -36,12 +40,17 @@ class Generator {
     defaultSchema.encodingFormat = fileType.mime
 
     const type = fileType.mime.split('/')[0]
+
+    const fileContent = await readFile(filePath)
+
+    const hash = await sha256.digest(fileContent)
+    const cid = CID.create(1, raw.code, hash).toString()
+
     switch (type) {
       case 'image':
-        const fileContent = await readFile(filePath)
-        return dioryImageGenerator(fileContent, filePath, filePath, fileType.mime)
+        return dioryImageGenerator(fileContent, filePath, cid, fileType.mime)
       case 'video':
-        return dioryVideoGenerator(filePath, filePath)
+        return dioryVideoGenerator(filePath, cid)
       case 'audio':
         defaultSchema['@type'] = 'AudioObject'
         break
@@ -84,7 +93,7 @@ class Generator {
   }
 
   generateDioryFromFile = async (filePath: string) => {
-    const { typeSpecificDiory, thumbnailBuffer } = await this.generatedDioryData(filePath)
+    const { typeSpecificDiory, thumbnailBuffer, cid } = await this.generatedDioryData(filePath)
     const dioryObject = this.generateDiory({
       ...this.baseData(filePath),
       ...typeSpecificDiory,
