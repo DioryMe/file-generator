@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Generates diories from files",
   "main": "dist/index.js",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "author": "",
   "license": "MIT",
   "dependencies": {
