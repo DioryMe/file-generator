@@ -1,7 +1,7 @@
 import { statSync } from 'fs'
 import { basename } from 'path/posix'
 import { Diory } from 'diograph-js'
-import { DioryLinkObject, DioryObject } from 'diograph-js'
+import { DioryLinkObject, DioryObject } from '../types'
 import { generateDiory } from '../diory'
 
 function getFirstImage(linkedDiorys: DioryObject[]) {

@@ -1,6 +1,6 @@
 import { statSync } from 'fs'
 import { basename } from 'path/posix'
-import { DioryAttributes } from 'diograph-js'
+import { DioryAttributes } from '../types'
 import { v4 as uuid } from 'uuid'
 import { getDefaultImage } from './getDefaultImage'
 

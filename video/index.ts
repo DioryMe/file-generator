@@ -1,6 +1,6 @@
 import { generateThumbnail } from './thumbnailer'
 import { parseFfmpegOutput } from './parse-ffmpeg-output'
-import { DioryGeneratorData } from 'diograph-js'
+import { DioryGeneratorData } from '../types'
 
 async function dioryVideoGenerator(filePath: string, cid: string): Promise<DioryGeneratorData> {
   const { thumbnailBuffer, ffmpegOutput } = await generateThumbnail(filePath)

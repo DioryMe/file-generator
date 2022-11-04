@@ -8,7 +8,7 @@ import { statSync } from 'fs'
 import { basename } from 'path'
 import { fromFile } from 'file-type'
 import { readFile } from 'fs/promises'
-import { DioryAttributes, DioryGeneratorData, DioryObject } from 'diograph-js'
+import { DioryAttributes, DioryGeneratorData, DioryObject } from './types'
 import { getDefaultImage } from './diory/getDefaultImage'
 import { v4 as uuidv4 } from 'uuid'
 

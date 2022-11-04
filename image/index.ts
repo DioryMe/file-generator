@@ -1,4 +1,4 @@
-import { DioryGeneratorData } from 'diograph-js'
+import { DioryGeneratorData } from '../types'
 import { retrieveMetadata } from './metadata'
 import { generateThumbnail } from './thumbnailer'
 
