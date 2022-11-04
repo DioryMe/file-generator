@@ -1,27 +1,29 @@
-import { generateThumbnail } from './thumbnailer'
-import { parseFfmpegOutput } from './parse-ffmpeg-output'
-import { DioryGeneratorData } from 'diograph-js'
+import { join } from 'path'
+import { IDiory } from '@diograph/diograph'
 
-async function dioryVideoGenerator(filePath: string, cid: string): Promise<DioryGeneratorData> {
-  const { thumbnailBuffer, ffmpegOutput } = await generateThumbnail(filePath)
-  const { date, latlng, duration } = parseFfmpegOutput(ffmpegOutput)
+import { ifDefined } from '../utils/ifDefined'
+import { generateMetadata } from './utils/generateMetadata'
 
-  const typeSpecificDiory = {
-    ...(date && { date }),
-    ...(latlng && { latlng }),
-    data: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'VideoObject',
-        contentUrl: cid,
-        cid,
-        ...(duration && { duration }),
-        encodingFormat: '',
-      },
-    ],
-  }
+import { generateDefaultDiory } from '../default'
+import { getImage } from './image'
+import { getDate } from './date'
+import { getLatlng } from './latlng'
+import { getData } from './data'
 
-  return { typeSpecificDiory, thumbnailBuffer, cid }
+export async function generateVideoDiory(rootPath: string, subPath: string): Promise<IDiory> {
+  const filePath = join(rootPath, subPath)
+
+  const { thumbnailBuffer, metadataString } = await generateMetadata(filePath)
+
+  const defaultDiory = await generateDefaultDiory(rootPath, subPath)
+
+  const text = undefined
+  const image: string | undefined = thumbnailBuffer && (await getImage(thumbnailBuffer))
+  const date: string | undefined = getDate(metadataString)
+  const latlng: string | undefined = getLatlng(metadataString)
+  const data: any[] = await getData(rootPath, subPath, metadataString)
+
+  return defaultDiory
+    .update({ text }, false)
+    .update(ifDefined({ image, date, latlng, data }), false)
 }
-
-export { dioryVideoGenerator }

@@ -1,13 +1,22 @@
 {
   "name": "@diograph/file-generator",
-  "version": "0.0.4-rc2",
-  "description": "Generates diories from files",
+  "version": "0.0.5-rc7",
+  "description": "Generates diory from file",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "author": "",
+  "author": "Olli-Pekka Pohjola <op@diory.me>, Jouni Alanen <jouni@diory.me>",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "build-watch": "yarn build --watch",
+    "prettier": "prettier --write .",
+    "test": "jest --verbose",
+    "test-watch": "jest --watch",
+    "prepare": "yarn build",
+    "publish": "yarn version && yarn build && npm publish"
+  },
   "dependencies": {
-    "diograph-js": "0.0.4-rc1",
+    "@diograph/diograph": "^0.1.1",
     "exifreader": "^4.8.1",
     "file-type": "^16.4.0",
     "multiformats": "^9.6.0",
@@ -18,17 +27,11 @@
     "@types/jest": "^29.2.2",
     "@types/sharp": "0.31.0",
     "@types/uuid": "^8.3.4",
+    "babel-jest": "^29.3.1",
     "jest": "^29.3.1",
     "prettier": "^2.5.1",
     "ts-jest": "^29.0.3",
     "typescript": "^4.8.4"
-  },
-  "scripts": {
-    "build": "tsc",
-    "build-watch": "yarn build --watch",
-    "prettier": "prettier --write .",
-    "test": "jest .",
-    "test-watch": "yarn test --watch"
   },
   "prettier": {
     "tabWidth": 2,
