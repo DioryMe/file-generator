@@ -1,6 +1,6 @@
 {
   "name": "@diograph/file-generator",
-  "version": "0.0.4-rc1",
+  "version": "0.0.4-rc2",
   "description": "Generates diories from files",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
