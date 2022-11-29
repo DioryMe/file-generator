@@ -10,7 +10,7 @@
     "diograph-js": "0.0.3",
     "exifreader": "^4.1.0",
     "file-type": "^16.4.0",
-    "multiformats": "^9.6.5",
+    "multiformats": "^10.0.2",
     "sharp": "*",
     "uuid": "^8.3.2"
   },
@@ -27,8 +27,8 @@
     "build": "tsc",
     "build-watch": "yarn build --watch",
     "prettier": "prettier --write .",
-    "test": "jest .",
-    "test-watch": "yarn test --watch"
+    "test": "jest --verbose",
+    "test-watch": "jest --watch"
   },
   "prettier": {
     "tabWidth": 2,
