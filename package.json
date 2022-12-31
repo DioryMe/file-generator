@@ -1,24 +1,24 @@
 {
   "name": "@diograph/file-generator",
-  "version": "0.0.3",
+  "version": "0.0.5-rc3",
   "description": "Generates diograph from files",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "author": "",
+  "author": "Olli-Pekka Pohjola <op@diory.me>, Jouni Alanen <jouni@diory.me>",
   "license": "MIT",
   "dependencies": {
-    "diograph-js": "file:../../diograph-js",
     "exifreader": "^4.1.0",
     "file-type": "^16.4.0",
     "multiformats": "^10.0.2",
     "sharp": "*",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.20.11",
+    "@diograph/diograph": "0.0.2-rc2",
     "@types/jest": "^27.4.0",
     "@types/sharp": "*",
-    "@types/uuid": "^8.3.4",
+    "@types/uuid": "^9.0.0",
     "babel-jest": "^29.3.1",
     "jest": "^27.5.0",
     "prettier": "^2.5.1",
