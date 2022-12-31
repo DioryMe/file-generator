@@ -21,9 +21,7 @@ describe('generateDocumentDiory', () => {
   })
 
   it('generates document diory from pdf', async () => {
-    const filePath = join(__dirname, '/__fixtures__/some-document.pdf')
-
-    const diory = await generateDocumentDiory(filePath)
+    const diory = await generateDocumentDiory(__dirname + '/__fixtures__', '/some-document.pdf')
 
     expect(diory.toObject()).toStrictEqual({
       "created": "2023-01-01T00:00:00.000Z",
@@ -31,7 +29,7 @@ describe('generateDocumentDiory', () => {
         {
           "@context": "https://schema.org",
           "@type": "DigitalDocument",
-          "contentUrl": filePath,
+          "contentUrl": '/some-document.pdf',
           "encodingFormat": "application/pdf",
         },
       ],
@@ -44,9 +42,7 @@ describe('generateDocumentDiory', () => {
   })
 
   it('generates document diory from odt', async () => {
-    const filePath = join(__dirname, '/__fixtures__/some-document.odt')
-
-    const diory = await generateDocumentDiory(filePath)
+    const diory = await generateDocumentDiory(__dirname + '/__fixtures__', '/some-document.odt')
 
     expect(diory.toObject()).toStrictEqual({
       "created": "2023-01-01T00:00:00.000Z",
@@ -54,7 +50,7 @@ describe('generateDocumentDiory', () => {
         {
           "@context": "https://schema.org",
           "@type": "DigitalDocument",
-          "contentUrl": filePath,
+          "contentUrl": '/some-document.odt',
           "encodingFormat": "application/vnd.oasis.opendocument.text",
         },
       ],
@@ -67,9 +63,7 @@ describe('generateDocumentDiory', () => {
   })
 
   it('generates document diory from docx', async () => {
-    const filePath = join(__dirname, '/__fixtures__/some-document.docx')
-
-    const diory = await generateDocumentDiory(filePath)
+    const diory = await generateDocumentDiory(__dirname + '/__fixtures__', '/some-document.docx')
 
     expect(diory.toObject()).toStrictEqual({
       "created": "2023-01-01T00:00:00.000Z",
@@ -77,7 +71,7 @@ describe('generateDocumentDiory', () => {
         {
           "@context": "https://schema.org",
           "@type": "DigitalDocument",
-          "contentUrl": filePath,
+          "contentUrl": '/some-document.docx',
           "encodingFormat": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         },
       ],

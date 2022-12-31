@@ -1,6 +1,8 @@
 import { fromFile } from 'file-type'
+const { join } = require('path')
 
-export async function resolveFileType(filePath: string): Promise<string | undefined> {
+export async function resolveFileType(rootPath: string, subPath: string): Promise<string | undefined> {
+  const filePath = join(rootPath, subPath)
   const fileMimeType = await fromFile(filePath)
   if (!fileMimeType?.mime) {
     return
