@@ -1,4 +1,4 @@
-import { IDioryObject } from 'diograph-js'
+import { IDioryObject } from '@diograph/diograph'
 
 import { generateMetadata } from './utils/generateMetadata'
 

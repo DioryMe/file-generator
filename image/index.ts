@@ -1,5 +1,5 @@
 import { readFile } from 'fs/promises'
-import { IDioryObject } from 'diograph-js'
+import { IDioryObject } from '@diograph/diograph'
 
 import { readExifTags } from './utils'
 

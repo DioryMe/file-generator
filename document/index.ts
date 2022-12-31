@@ -1,4 +1,4 @@
-import { IDioryObject } from 'diograph-js/index'
+import { IDioryObject } from '@diograph/diograph'
 import { generateDefaultDioryObject } from '../default'
 import { getData } from './data'
 
