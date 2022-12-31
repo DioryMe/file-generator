@@ -1,9 +1,10 @@
-import { IDioryObject } from 'diograph-js/index'
-import { generateDefaultDioryObject } from '../default'
+import { IDiory } from '@diograph/diograph'
+import { generateDefaultDiory } from '../default'
 import { getData } from './data'
 
-export async function generateDocumentDioryObject(filePath: string): Promise<IDioryObject> {
+export async function generateDocumentDiory(filePath: string): Promise<IDiory> {
   const data: any[] = await getData(filePath)
 
-  const defaultDioryObject = await generateDefaultDioryObject(filePath)
-  return { ...defaultDioryObject, data }}
+  const defaultDiory = await generateDefaultDiory(filePath)
+  return defaultDiory.update({ data })
+}

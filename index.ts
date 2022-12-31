@@ -1,25 +1,25 @@
-import { IDioryObject } from 'diograph-js'
+import { IDiory } from '@diograph/diograph'
 
 import { resolveFileType } from './utils/resolveFileType'
 
-import { generateImageDioryObject } from './image'
-import { generateVideoDioryObject } from './video'
-import { generateDocumentDioryObject } from './document'
-import { generateDefaultDioryObject } from './default'
+import { generateImageDiory } from './image'
+import { generateVideoDiory } from './video'
+import { generateDocumentDiory } from './document'
+import { generateDefaultDiory } from './default'
 
-export const generateFileDioryObject = async (filePath: string): Promise<IDioryObject> => {
+export const generateFileDiory = async (filePath: string): Promise<IDiory> => {
   const fileType = await resolveFileType(filePath)
   switch (fileType) {
     case 'image':
-      return generateImageDioryObject(filePath)
+      return generateImageDiory(filePath)
     case 'video':
-      return generateVideoDioryObject(filePath)
+      return generateVideoDiory(filePath)
     case 'document':
-      return generateDocumentDioryObject(filePath)
+      return generateDocumentDiory(filePath)
     // case 'audio':
     // case 'application':
     // case 'text':
     default:
-      return generateDefaultDioryObject(filePath)
+      return generateDefaultDiory(filePath)
   }
 }
