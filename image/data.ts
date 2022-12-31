@@ -1,4 +1,4 @@
-import { FileTypeResult, fromFile } from 'file-type'
+import { getFileData } from '../utils/getFileData'
 import { ImageObject } from './schema-types'
 
 function getHeight(tags: any): string | undefined {
@@ -9,14 +9,14 @@ function getWidth(tags: any): string | undefined {
   return tags['Image Width']?.value
 }
 
-export async function getData(filePath: string, tags: any, ) {
-  const fileType: FileTypeResult | undefined = await fromFile(filePath)
+export async function getData(rootPath: string, subPath: string, tags: any, ) {
+  const { contentUrl, encodingFormat } = await getFileData(rootPath, subPath)
 
   const schema: ImageObject = {
     '@context': 'https://schema.org',
     '@type': 'ImageObject',
-    contentUrl: filePath,
-    encodingFormat: fileType?.mime,
+    contentUrl,
+    encodingFormat,
     height: getHeight(tags),
     width: getWidth(tags),
   }
