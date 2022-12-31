@@ -1,7 +1,7 @@
 {
   "name": "@diograph/file-generator",
   "version": "0.0.3",
-  "description": "Generates diories from files",
+  "description": "Generates diograph from files",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "",
@@ -15,9 +15,11 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "@types/jest": "^27.4.0",
     "@types/sharp": "*",
     "@types/uuid": "^8.3.4",
+    "babel-jest": "^29.3.1",
     "jest": "^27.5.0",
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.3",
