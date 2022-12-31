@@ -1,5 +1,5 @@
 import { readFile } from 'fs/promises'
-import { IDioryObject } from '@diograph/diograph'
+import { Diory, IDiory } from '@diograph/diograph'
 
 import { getCid } from '../utils/getCid'
 
@@ -8,7 +8,7 @@ import { getImage } from './image'
 import { getCreate } from './created'
 import { getModified } from './modified'
 
-export async function generateDefaultDioryObject(filePath: string, fileContent?: Buffer): Promise<IDioryObject> {
+export async function generateDefaultDiory(filePath: string, fileContent?: Buffer): Promise<IDiory> {
   if (!fileContent) {
     fileContent = await readFile(filePath)
   }
@@ -20,5 +20,5 @@ export async function generateDefaultDioryObject(filePath: string, fileContent?:
   const created: string | undefined = getCreate(filePath)
   const modified: string | undefined = getModified(filePath)
 
-  return { id, text, image, date, created, modified }
+  return new Diory({ id, text, image, date, created, modified })
 }
