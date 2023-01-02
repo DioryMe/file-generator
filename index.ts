@@ -7,19 +7,19 @@ import { generateVideoDiory } from './video'
 import { generateDocumentDiory } from './document'
 import { generateDefaultDiory } from './default'
 
-export const generateFileDiory = async (filePath: string): Promise<IDiory> => {
-  const fileType = await resolveFileType(filePath)
+export const generateFileDiory = async (rootPath: string, filePath: string): Promise<IDiory> => {
+  const fileType = await resolveFileType(rootPath, filePath)
   switch (fileType) {
     case 'image':
-      return generateImageDiory(filePath)
+      return generateImageDiory(rootPath, filePath)
     case 'video':
-      return generateVideoDiory(filePath)
+      return generateVideoDiory(rootPath, filePath)
     case 'document':
-      return generateDocumentDiory(filePath)
+      return generateDocumentDiory(rootPath, filePath)
     // case 'audio':
     // case 'application':
     // case 'text':
     default:
-      return generateDefaultDiory(filePath)
+      return generateDefaultDiory(rootPath, filePath)
   }
 }

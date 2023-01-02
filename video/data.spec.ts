@@ -7,7 +7,8 @@ jest.mock('file-type', () => ({
 describe('getData', () => {
   it('adds duration', async () => {
     const data = await getData(
-      'some-path',
+      'some-rootPath',
+      'some-subPath',
       '  Duration: 00:00:34.56, start: 0.000000, bitrate: 20455 kb/s'
     )
 
