@@ -9,7 +9,11 @@ import { getImage } from './image'
 import { getCreate } from './created'
 import { getModified } from './modified'
 
-export async function generateDefaultDiory(rootPath: string, subPath: string, fileContent?: Buffer): Promise<IDiory> {
+export async function generateDefaultDiory(
+  rootPath: string,
+  subPath: string,
+  fileContent?: Buffer,
+): Promise<IDiory> {
   const filePath = join(rootPath, subPath)
   if (!fileContent) {
     fileContent = await readFile(filePath)
@@ -22,5 +26,6 @@ export async function generateDefaultDiory(rootPath: string, subPath: string, fi
   const created: string | undefined = getCreate(filePath)
   const modified: string | undefined = getModified(filePath)
 
+  console.log(modified)
   return new Diory({ id, text, image, date, created, modified })
 }

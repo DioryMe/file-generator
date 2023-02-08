@@ -1,5 +1,3 @@
-import { join } from 'path'
-
 // Mocks
 jest.mock('fs', () => ({
   ...jest.requireActual('fs'),
@@ -24,20 +22,21 @@ describe('generateDocumentDiory', () => {
     const diory = await generateDocumentDiory(__dirname + '/__fixtures__', '/some-document.pdf')
 
     expect(diory.toObject()).toStrictEqual({
-      "created": "2023-01-01T00:00:00.000Z",
-      "data": [
+      created: '2023-01-01T00:00:00.000Z',
+      data: [
         {
-          "@context": "https://schema.org",
-          "@type": "DigitalDocument",
-          "contentUrl": '/some-document.pdf',
-          "encodingFormat": "application/pdf",
+          '@context': 'https://schema.org',
+          '@type': 'DigitalDocument',
+          contentUrl: '/some-document.pdf',
+          encodingFormat: 'application/pdf',
         },
       ],
-      "date": "2023-01-01T00:00:00.000Z",
-      "id": "bafkreifplif2mdxkjhdsfxe6sxynidybwxkvadck5yazt2wabdidfadq34",
-      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMPvD6PwAGiwMHcHyXEAAAAABJRU5ErkJggg==",
-      "modified": "2023-01-02T00:00:00.000Z",
-      "text": "some-document.pdf",
+      date: '2023-01-01T00:00:00.000Z',
+      id: 'bafkreifplif2mdxkjhdsfxe6sxynidybwxkvadck5yazt2wabdidfadq34',
+      image:
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMPvD6PwAGiwMHcHyXEAAAAABJRU5ErkJggg==',
+      modified: '2023-01-02T00:00:00.000Z',
+      text: 'some-document.pdf',
     })
   })
 
@@ -45,20 +44,21 @@ describe('generateDocumentDiory', () => {
     const diory = await generateDocumentDiory(__dirname + '/__fixtures__', '/some-document.odt')
 
     expect(diory.toObject()).toStrictEqual({
-      "created": "2023-01-01T00:00:00.000Z",
-      "data": [
+      created: '2023-01-01T00:00:00.000Z',
+      data: [
         {
-          "@context": "https://schema.org",
-          "@type": "DigitalDocument",
-          "contentUrl": '/some-document.odt',
-          "encodingFormat": "application/vnd.oasis.opendocument.text",
+          '@context': 'https://schema.org',
+          '@type': 'DigitalDocument',
+          contentUrl: '/some-document.odt',
+          encodingFormat: 'application/vnd.oasis.opendocument.text',
         },
       ],
-      "date": "2023-01-01T00:00:00.000Z",
-      "id": "bafkreibmmzu26ak6fu24st2yofgulmv6heqwoqhrwewyfs3wcv25psk2cq",
-      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMPvD6PwAGiwMHcHyXEAAAAABJRU5ErkJggg==",
-      "modified": "2023-01-02T00:00:00.000Z",
-      "text": "some-document.odt",
+      date: '2023-01-01T00:00:00.000Z',
+      id: 'bafkreibmmzu26ak6fu24st2yofgulmv6heqwoqhrwewyfs3wcv25psk2cq',
+      image:
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMPvD6PwAGiwMHcHyXEAAAAABJRU5ErkJggg==',
+      modified: '2023-01-02T00:00:00.000Z',
+      text: 'some-document.odt',
     })
   })
 
@@ -66,20 +66,21 @@ describe('generateDocumentDiory', () => {
     const diory = await generateDocumentDiory(__dirname + '/__fixtures__', '/some-document.docx')
 
     expect(diory.toObject()).toStrictEqual({
-      "created": "2023-01-01T00:00:00.000Z",
-      "data": [
+      created: '2023-01-01T00:00:00.000Z',
+      data: [
         {
-          "@context": "https://schema.org",
-          "@type": "DigitalDocument",
-          "contentUrl": '/some-document.docx',
-          "encodingFormat": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          '@context': 'https://schema.org',
+          '@type': 'DigitalDocument',
+          contentUrl: '/some-document.docx',
+          encodingFormat: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         },
       ],
-      "date": "2023-01-01T00:00:00.000Z",
-      "id": "bafkreieqnsym3c5aoh3pyeyy6qb2ib5rkid4dki4qepw3m4lzpgbzszyaq",
-      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMPvD6PwAGiwMHcHyXEAAAAABJRU5ErkJggg==",
-      "modified": "2023-01-02T00:00:00.000Z",
-      "text": "some-document.docx",
+      date: '2023-01-01T00:00:00.000Z',
+      id: 'bafkreieqnsym3c5aoh3pyeyy6qb2ib5rkid4dki4qepw3m4lzpgbzszyaq',
+      image:
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMPvD6PwAGiwMHcHyXEAAAAABJRU5ErkJggg==',
+      modified: '2023-01-02T00:00:00.000Z',
+      text: 'some-document.docx',
     })
   })
 })
