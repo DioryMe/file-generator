@@ -3,4 +3,3 @@ export function getLatlng({ GPSLatitude = {}, GPSLongitude = {} }: any): string 
   const lng = GPSLongitude.description
   return lat && lng && `${lat}, ${lng}`
 }
-

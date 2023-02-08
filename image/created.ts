@@ -5,4 +5,3 @@ function getIsoDate(isoDate: any) {
 export function getCreated({ DateCreated, CreateDate }: any): string | undefined {
   return getIsoDate(DateCreated) || getIsoDate(CreateDate)
 }
-

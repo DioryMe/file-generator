@@ -2,7 +2,7 @@ import { generateMetadata } from './generateMetadata'
 import { executeFfmpegInChildProcess } from './ffmpeg'
 
 jest.mock('fs/promises', () => ({
-  readFile: jest.fn().mockResolvedValue('some-thumbnail-buffer-content')
+  readFile: jest.fn().mockResolvedValue('some-thumbnail-buffer-content'),
 }))
 
 const { execFileReturnObjectFixture } = require('./ffmpeg-return-object-fixture')

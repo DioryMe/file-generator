@@ -6,5 +6,5 @@ export async function generateDocumentDiory(rootPath: string, subPath: string): 
   const defaultDiory = await generateDefaultDiory(rootPath, subPath)
   const data: any[] = await getData(rootPath, subPath)
 
-  return defaultDiory.update({ data })
+  return defaultDiory.update({ data }, false)
 }
