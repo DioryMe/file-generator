@@ -26,5 +26,7 @@ export async function generateImageDiory(rootPath: string, subPath: string): Pro
   const created: string | undefined = getCreated(tags)
   const data: any[] = await getData(rootPath, subPath, tags)
 
-  return defaultDiory.update({ text }).update(ifDefined({ image, date, latlng, created, data }))
+  return defaultDiory
+    .update({ text }, false)
+    .update(ifDefined({ image, date, latlng, created, data }), false)
 }

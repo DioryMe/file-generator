@@ -23,5 +23,7 @@ export async function generateVideoDiory(rootPath: string, subPath: string): Pro
   const latlng: string | undefined = getLatlng(metadataString)
   const data: any[] = await getData(rootPath, subPath, metadataString)
 
-  return defaultDiory.update({ text }).update(ifDefined({ image, date, latlng, data }))
+  return defaultDiory
+    .update({ text }, false)
+    .update(ifDefined({ image, date, latlng, data }), false)
 }

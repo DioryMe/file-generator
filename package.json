@@ -13,7 +13,7 @@
     "test": "jest --verbose",
     "test-watch": "jest --watch",
     "prepare": "yarn prettier && yarn test && yarn build",
-    "publish": "yarn build && yarn version && npm publish"
+    "publish": "yarn version && yarn build &&  npm publish"
   },
   "dependencies": {
     "exifreader": "^4.1.0",

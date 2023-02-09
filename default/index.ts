@@ -26,6 +26,5 @@ export async function generateDefaultDiory(
   const created: string | undefined = getCreate(filePath)
   const modified: string | undefined = getModified(filePath)
 
-  console.log(modified)
   return new Diory({ id, text, image, date, created, modified })
 }
