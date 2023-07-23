@@ -10,6 +10,7 @@ describe('getData', () => {
       'some-rootPath',
       'some-subPath',
       '  Duration: 00:00:34.56, start: 0.000000, bitrate: 20455 kb/s',
+      'this-is-cid-placeholder',
     )
 
     expect(data && data[0].duration).toEqual('00:00:34.56')

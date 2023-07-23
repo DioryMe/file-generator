@@ -38,7 +38,7 @@ describe('generateImageDiory', () => {
           {
             "@context": "https://schema.org",
             "@type": "VideoObject",
-            "contentUrl": "/some-video.mp4",
+            "contentUrl": "bafkreia2c44rszqme57sao4ydipv3xtwfoigag7b2lzfeuwtunctzfdx4a",
             "duration": "00:00:34.56",
             "encodingFormat": "video/x-m4v",
           },

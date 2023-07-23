@@ -17,7 +17,7 @@ describe('generateImageDiory', () => {
           {
             "@context": "https://schema.org",
             "@type": "ImageObject",
-            "contentUrl": "/some-image.jpg",
+            "contentUrl": "bafkreiadqn5sraouzr7f4ayzdmyb6cbard4ztzfklhseremtq5gjhqyvpe",
             "encodingFormat": "image/jpeg",
             "height": 480,
             "width": 640,
@@ -42,7 +42,7 @@ describe('generateImageDiory', () => {
           {
             "@context": "https://schema.org",
             "@type": "ImageObject",
-            "contentUrl": "/image-with-24-hour.jpg",
+            "contentUrl": "bafkreie35b77ve7u2y5q3zbpbw7a6essx7e7ciorrvn4ftbfrbnvm6iyny",
             "encodingFormat": "image/jpeg",
             "height": 3000,
             "width": 4000,
