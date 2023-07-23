@@ -18,7 +18,7 @@
   "dependencies": {
     "exifreader": "^4.1.0",
     "file-type": "^16.4.0",
-    "multiformats": "^10.0.2",
+    "multiformats": "9.9.0",
     "sharp": "*",
     "uuid": "^9.0.0"
   },
