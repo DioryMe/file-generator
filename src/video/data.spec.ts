@@ -4,7 +4,7 @@ jest.mock('file-type', () => ({
   fromFile: jest.fn().mockResolvedValue({}),
 }))
 
-describe('getData joo', () => {
+describe('getData', () => {
   it('adds duration', async () => {
     const data = await getData(
       'some-rootPath',
