@@ -1,18 +1,17 @@
-import { generateMetadata } from './generateMetadata'
 import { executeFfmpegInChildProcess } from './ffmpeg'
+
+import { generateMetadata } from './generateMetadata'
 
 jest.mock('fs/promises', () => ({
   readFile: jest.fn().mockResolvedValue('some-thumbnail-buffer-content'),
 }))
 
 const { execFileReturnObjectFixture } = require('./ffmpeg-return-object-fixture')
-jest.mock('./ffmpeg', () => ({
-  executeFfmpegInChildProcess: jest.fn(),
-}))
+jest.mock('./ffmpeg')
 
 describe('generateMetadata', () => {
   beforeEach(() => {
-    ;(executeFfmpegInChildProcess as jest.Mock).mockResolvedValue({
+    (executeFfmpegInChildProcess as jest.Mock).mockResolvedValue({
       tmpPath: 'tmp-path',
       returnObject: execFileReturnObjectFixture,
     })
@@ -20,15 +19,21 @@ describe('generateMetadata', () => {
     process.env.FFMPEG_PATH = 'some-path'
   })
 
+  afterAll(() => {
+    delete process.env.FFMPEG_PATH
+  })
+
   describe('given some path', () => {
     it('returns thumbnail buffer', async () => {
-      const returnValue = await generateMetadata('some-path')
-      expect(returnValue.thumbnailBuffer).toEqual('some-thumbnail-buffer-content')
+      const { thumbnailBuffer } = await generateMetadata('some-path')
+
+      expect(thumbnailBuffer).toEqual('some-thumbnail-buffer-content')
     })
 
     it('returns metadata string', async () => {
-      const returnValue = await generateMetadata('some-path')
-      expect(returnValue.metadataString).toEqual(execFileReturnObjectFixture.stderr)
+      const { metadataString } = await generateMetadata('some-path')
+
+      expect(metadataString).toEqual(execFileReturnObjectFixture.stderr)
     })
   })
 
