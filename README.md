@@ -12,7 +12,7 @@ yarn add @diograph/file-generator
 
 ```
 import { generateDiory } from '@diograph/file-generator'
-const diory = await generateDiory(filePath)
+const diory = await generateDiory('', filePath)
 console.log('Hello diory!', diory.toObject())
 ```
 
