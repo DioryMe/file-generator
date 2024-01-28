@@ -1,5 +1,5 @@
 import { join } from 'path'
-import { IDiory } from '@diograph/diograph'
+import { IDiory } from '@diograph/diograph/types'
 
 import { ifDefined } from '../utils/ifDefined'
 import { generateMetadata } from './utils/generateMetadata'

@@ -1,6 +1,6 @@
 import { join } from 'path'
 import { readFile } from 'fs/promises'
-import { IDiory } from '@diograph/diograph'
+import { IDiory } from '@diograph/diograph/types'
 
 import { ifDefined } from '../utils/ifDefined'
 import { readExifTags } from './utils'
