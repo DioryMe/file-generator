@@ -1,0 +1,17 @@
+name: Publish to NPM
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Specify the version to publish'
+        required: true
+        type: string
+
+jobs:
+  publish:
+    uses: DioryMe/.github/.github/workflows/publish-npm.yml@main
+    secrets:
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    with:
+      version: ${{ github.event.inputs.version }}
