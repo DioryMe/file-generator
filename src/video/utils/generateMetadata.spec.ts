@@ -11,7 +11,7 @@ jest.mock('./ffmpeg')
 
 describe('generateMetadata', () => {
   beforeEach(() => {
-    (executeFfmpegInChildProcess as jest.Mock).mockResolvedValue({
+    ;(executeFfmpegInChildProcess as jest.Mock).mockResolvedValue({
       tmpPath: 'tmp-path',
       returnObject: execFileReturnObjectFixture,
     })

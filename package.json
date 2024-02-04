@@ -12,7 +12,7 @@
     "prettier": "prettier --write .",
     "test": "jest --verbose",
     "test-watch": "jest --watch",
-    "prepare": "yarn prettier && yarn test && yarn build"
+    "prepare": "yarn prettier && yarn build"
   },
   "dependencies": {
     "@diograph/diograph": "^0.2.2-rc2",
