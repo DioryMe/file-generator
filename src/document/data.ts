@@ -8,7 +8,7 @@ export async function getData(rootPath: string, subPath: string, cid: string): P
     '@context': 'https://schema.org',
     '@type': 'DigitalDocument',
     contentUrl: cid,
-    encodingFormat,
+    encodingFormat: encodingFormat || 'application/octet-stream',
   }
 
   return [schema]

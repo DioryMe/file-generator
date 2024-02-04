@@ -19,7 +19,7 @@ export async function getData(
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
     contentUrl: cid,
-    encodingFormat,
+    encodingFormat: encodingFormat || 'application/octet-stream',
     ...(duration && { duration }),
   }
 
