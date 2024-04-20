@@ -17,9 +17,8 @@ export async function generateMetadata(sourceFilePath: string, time: number = 3)
   try {
     const thumbnailBuffer: Buffer = await readFile(tmpPath)
     return { thumbnailBuffer, metadataString }
-  } catch (e) {
-    console.log(returnObject)
-    console.log(e)
+  } catch (error) {
+    console.error('Reading video thumbnail failed', error)
     return { metadataString }
   }
 }

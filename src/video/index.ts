@@ -13,17 +13,20 @@ import { getData } from './data'
 export async function generateVideoDiory(rootPath: string, subPath: string): Promise<IDiory> {
   const filePath = join(rootPath, subPath)
 
-  const { thumbnailBuffer, metadataString } = await generateMetadata(filePath)
-
-  const defaultDiory = await generateDefaultDiory(rootPath, subPath)
-
   const text = undefined
-  const image: string | undefined = thumbnailBuffer && (await getImage(thumbnailBuffer))
-  const date: string | undefined = getDate(metadataString)
-  const latlng: string | undefined = getLatlng(metadataString)
-  const data: any[] = await getData(rootPath, subPath, metadataString, defaultDiory.id)
+  const defaultDiory = (await generateDefaultDiory(rootPath, subPath)).update({ text }, false)
 
-  return defaultDiory
-    .update({ text }, false)
-    .update(ifDefined({ image, date, latlng, data }), false)
+  try {
+    const { thumbnailBuffer, metadataString } = await generateMetadata(filePath)
+
+    const image: string | undefined = thumbnailBuffer && (await getImage(thumbnailBuffer))
+    const date: string | undefined = getDate(metadataString)
+    const latlng: string | undefined = getLatlng(metadataString)
+    const data: any[] = await getData(rootPath, subPath, metadataString, defaultDiory.id)
+
+    return defaultDiory.update(ifDefined({ image, date, latlng, data }), false)
+  } catch (error) {
+    console.error(error)
+    return defaultDiory
+  }
 }
