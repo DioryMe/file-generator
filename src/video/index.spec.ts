@@ -1,4 +1,5 @@
 import { join } from 'path'
+import { IDiory } from '@diograph/diograph'
 import { mockFsStatSync } from '../testUtils'
 import { generateMetadata } from './utils/generateMetadata'
 
@@ -29,8 +30,7 @@ describe('generateImageDiory', () => {
   })
 
   it('generates video diory from mp4', async () => {
-    const diory = await generateVideoDiory(__dirname + '/__fixtures__', '/some-video.mp4')
-
+    const diory: IDiory = await generateVideoDiory(fixtures, '/some-video.mp4')
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {
         "created": "2023-01-01T00:00:00.000Z",
