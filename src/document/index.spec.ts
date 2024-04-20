@@ -1,4 +1,5 @@
 import { join } from 'path'
+import { IDiory } from '@diograph/diograph'
 import { mockFsStatSync } from '../testUtils'
 
 import { generateDocumentDiory } from './index'
@@ -12,7 +13,7 @@ describe('generateDocumentDiory', () => {
   })
 
   it('generates document diory from pdf', async () => {
-    const diory = await generateDocumentDiory(fixtures, '/some-document.pdf')
+    const diory: IDiory = await generateDocumentDiory(fixtures, '/some-document.pdf')
 
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {
@@ -35,7 +36,7 @@ describe('generateDocumentDiory', () => {
   })
 
   it('generates document diory from odt', async () => {
-    const diory = await generateDocumentDiory(fixtures, '/some-document.odt')
+    const diory: IDiory = await generateDocumentDiory(fixtures, '/some-document.odt')
 
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {
@@ -58,7 +59,7 @@ describe('generateDocumentDiory', () => {
   })
 
   it('generates document diory from docx', async () => {
-    const diory = await generateDocumentDiory(fixtures, '/some-document.docx')
+    const diory: IDiory = await generateDocumentDiory(fixtures, '/some-document.docx')
 
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {

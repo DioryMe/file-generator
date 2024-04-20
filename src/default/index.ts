@@ -1,7 +1,7 @@
 import { join } from 'path'
 import { readFile } from 'fs/promises'
-import { Diory } from '@diograph/diograph'
-import { IDiory } from '@diograph/diograph/types'
+
+import { Diory, IDiory } from '@diograph/diograph'
 
 import { getCid } from '../utils/getCid'
 

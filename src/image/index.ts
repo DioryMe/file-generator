@@ -1,6 +1,6 @@
 import { join } from 'path'
 import { readFile } from 'fs/promises'
-import { IDiory } from '@diograph/diograph/types'
+import { IDiory } from '@diograph/diograph'
 
 import { ifDefined } from '../utils/ifDefined'
 import { readExifTags } from './utils'
@@ -11,20 +11,21 @@ import { getDate } from './date'
 import { getLatlng } from './latlng'
 import { getCreated } from './created'
 import { getData } from './data'
+import { ImageObject } from './schema-types'
 
 export async function generateImageDiory(rootPath: string, subPath: string): Promise<IDiory> {
   const filePath = join(rootPath, subPath)
   const fileContent = await readFile(filePath)
   const tags: object = readExifTags(filePath)
 
-  const defaultDiory = await generateDefaultDiory(rootPath, subPath, fileContent)
+  const defaultDiory: IDiory = await generateDefaultDiory(rootPath, subPath, fileContent)
 
   const text = undefined
   const image: string | undefined = await getImage(fileContent)
   const date: string | undefined = getDate(tags)
   const latlng: string | undefined = getLatlng(tags)
   const created: string | undefined = getCreated(tags)
-  const data: any[] = await getData(rootPath, subPath, tags, defaultDiory.id)
+  const data: ImageObject[] = await getData(rootPath, subPath, tags, defaultDiory.id)
 
   return defaultDiory
     .update({ text }, false)

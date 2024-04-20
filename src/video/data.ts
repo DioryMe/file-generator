@@ -11,8 +11,8 @@ export async function getData(
   subPath: string,
   metadataString: string,
   cid: string,
-) {
-  const { contentUrl, encodingFormat } = await getFileData(rootPath, subPath)
+): Promise<VideoObject[]> {
+  const { encodingFormat } = await getFileData(rootPath, subPath)
   const duration: null | string = parseDuration(metadataString)
 
   const schema: VideoObject = {

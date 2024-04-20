@@ -1,4 +1,5 @@
 import { join } from 'path'
+import { IDiory } from '@diograph/diograph'
 import { mockFsStatSync } from '../testUtils'
 
 import { generateDefaultDiory } from './index'
@@ -12,7 +13,7 @@ describe('generateDefaultDiory', () => {
   })
 
   it('generates document diory from file', async () => {
-    const diory = await generateDefaultDiory(fixtures, '/some-file.txt')
+    const diory: IDiory = await generateDefaultDiory(fixtures, '/some-file.txt')
 
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {
