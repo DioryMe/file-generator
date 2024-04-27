@@ -1,5 +1,4 @@
-import { join } from 'path'
-import { readFile } from 'fs/promises'
+import { join } from 'path-browserify'
 import { IDiory } from '@diograph/diograph'
 
 import { ifDefined } from '../utils/ifDefined'
@@ -12,13 +11,18 @@ import { getLatlng } from './latlng'
 import { getCreated } from './created'
 import { getData } from './data'
 import { ImageObject } from './schema-types'
+import { IDataClient } from '@diograph/local-client'
 
-export async function generateImageDiory(rootPath: string, subPath: string): Promise<IDiory> {
+export async function generateImageDiory(
+  rootPath: string,
+  subPath: string,
+  client: IDataClient,
+): Promise<IDiory> {
   const filePath = join(rootPath, subPath)
-  const fileContent = await readFile(filePath)
-  const tags: object = readExifTags(filePath)
+  const fileContent: Buffer = await client.readItem(filePath)
+  const tags: object = readExifTags(fileContent)
 
-  const defaultDiory: IDiory = await generateDefaultDiory(rootPath, subPath, fileContent)
+  const defaultDiory: IDiory = await generateDefaultDiory(rootPath, subPath, client, fileContent)
 
   const text = undefined
   const image: string | undefined = await getImage(fileContent)

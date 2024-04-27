@@ -1,4 +1,4 @@
-import { join } from 'path'
+import { join } from 'path-browserify'
 import { IDiory } from '@diograph/diograph'
 
 import { ifDefined } from '../utils/ifDefined'
@@ -10,13 +10,17 @@ import { getDate } from './date'
 import { getLatlng } from './latlng'
 import { getData } from './data'
 import { VideoObject } from './schema-types'
+import { IDataClient } from '@diograph/local-client'
 
-export async function generateVideoDiory(rootPath: string, subPath: string): Promise<IDiory> {
+export async function generateVideoDiory(
+  rootPath: string,
+  subPath: string,
+  client: IDataClient,
+): Promise<IDiory> {
   const filePath = join(rootPath, subPath)
 
-  const text = undefined
-  const defaultDiory: IDiory = (await generateDefaultDiory(rootPath, subPath)).update(
-    { text },
+  const defaultDiory: IDiory = (await generateDefaultDiory(rootPath, subPath, client)).update(
+    { text: undefined },
     false,
   )
 

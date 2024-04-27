@@ -1,15 +1,15 @@
 import { IDiory } from '@diograph/diograph'
-import { mockFsStatSync } from '../testUtils'
+import { mockDataClient } from '../testUtils'
 
 import { generateImageDiory } from './index'
 
 describe('generateImageDiory', () => {
-  beforeEach(() => {
-    mockFsStatSync('2023-01-01', '2023-02-02')
-  })
-
   it('generates image diory from jpg', async () => {
-    const diory: IDiory = await generateImageDiory(__dirname + '/__fixtures__', '/some-image.jpg')
+    const diory: IDiory = await generateImageDiory(
+      __dirname + '/__fixtures__',
+      '/some-image.jpg',
+      mockDataClient('some-image.jpg', '2023-01-01', '2023-02-02'),
+    )
 
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {
@@ -37,6 +37,7 @@ describe('generateImageDiory', () => {
     const diory: IDiory = await generateImageDiory(
       __dirname + '/__fixtures__',
       '/image-with-24-hour.jpg',
+      mockDataClient('some-name', '2023-01-01', '2023-02-02'),
     )
 
     expect(diory.toObject()).toMatchInlineSnapshot(`

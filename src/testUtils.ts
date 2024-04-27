@@ -1,12 +1,13 @@
-const mockFsStatSyncFn = jest.fn().mockReturnValue({})
-jest.mock('fs', () => ({
-  ...jest.requireActual('fs'),
-  statSync: mockFsStatSyncFn,
-}))
+import { LocalClient } from '@diograph/local-client'
 
-export const mockFsStatSync = (birthtime: string, mtime: string) => {
-  mockFsStatSyncFn.mockReturnValue({
-    birthtime: new Date(birthtime),
-    mtime: new Date(mtime),
-  })
+export const mockDataClient = (name: string, created: string, modified: string) => {
+  const client = new LocalClient()
+  
+  jest.spyOn(client, 'getMetadata').mockImplementation(() => ({
+    name,
+    created: new Date(created).toISOString(),
+    modified: new Date(modified).toISOString(),
+  }));
+  
+  return client
 }

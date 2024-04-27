@@ -1,4 +1,4 @@
-import { join } from 'path'
+import { join } from 'path-browserify'
 import { FileTypeResult, fromFile } from 'file-type'
 
 interface FileData {

@@ -1,6 +1,6 @@
 // Promisified version of execFile to execute the ffmpeg command safely as child_process
 const execFile = require('util').promisify(require('child_process').execFile)
-import { join } from 'path'
+import { join } from 'path-browserify'
 import { v4 as uuidv4 } from 'uuid'
 
 // source: https://github.com/DefinitelyTyped/DefinitelyTyped/blob/cccb632e91d7eb1f345ac04afa663b3813711ed4/types/node/child_process.d.ts#L1012

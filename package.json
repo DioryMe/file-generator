@@ -15,13 +15,16 @@
     "prettier": "prettier --write .",
     "test": "jest --verbose",
     "test-watch": "jest --watch",
-    "prepare": "yarn prettier && yarn build"
+    "prepare": "yarn test && yarn prettier && yarn build"
   },
   "dependencies": {
     "@diograph/diograph": "0.3.0-rc11",
+    "@diograph/local-client": "^0.3.0-rc3",
+    "@types/path-browserify": "^1.0.2",
     "exifreader": "^4.8.1",
     "file-type": "^16.4.0",
     "multiformats": "^9.6.0",
+    "path-browserify": "^1.0.1",
     "sharp": "0.31.2",
     "uuid": "^9.0.0"
   },
