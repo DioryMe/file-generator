@@ -1,4 +1,3 @@
-import { getFileData } from '../utils/getFileData'
 import { VideoObject } from './schema-types'
 
 function parseDuration(outputString: string): null | string {
@@ -7,19 +6,17 @@ function parseDuration(outputString: string): null | string {
 }
 
 export async function getData(
-  rootPath: string,
-  subPath: string,
   metadataString: string,
   cid: string,
+  mime?: string,
 ): Promise<VideoObject[]> {
-  const { encodingFormat } = await getFileData(rootPath, subPath)
   const duration: null | string = parseDuration(metadataString)
 
   const schema: VideoObject = {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
     contentUrl: cid,
-    encodingFormat: encodingFormat || 'application/octet-stream',
+    encodingFormat: mime || 'application/octet-stream',
     ...(duration && { duration }),
   }
 

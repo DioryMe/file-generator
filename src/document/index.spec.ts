@@ -1,6 +1,6 @@
-import { join } from 'path'
+import { join } from 'path-browserify'
 import { IDiory } from '@diograph/diograph'
-import { mockFsStatSync } from '../testUtils'
+import { mockDataClient } from '../testUtils'
 
 import { generateDocumentDiory } from './index'
 
@@ -8,12 +8,14 @@ const fixtures = join(__dirname, '__fixtures__')
 describe('generateDocumentDiory', () => {
   beforeEach(() => {
     jest.spyOn(Math, 'random').mockReturnValue(0)
-
-    mockFsStatSync('2023-01-01', '2023-02-02')
   })
 
   it('generates document diory from pdf', async () => {
-    const diory: IDiory = await generateDocumentDiory(fixtures, '/some-document.pdf')
+    const diory: IDiory = await generateDocumentDiory(
+      fixtures,
+      '/some-document.pdf',
+      mockDataClient('some-document.pdf', '2023-01-01', '2023-02-02'),
+    )
 
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {
@@ -36,7 +38,11 @@ describe('generateDocumentDiory', () => {
   })
 
   it('generates document diory from odt', async () => {
-    const diory: IDiory = await generateDocumentDiory(fixtures, '/some-document.odt')
+    const diory: IDiory = await generateDocumentDiory(
+      fixtures,
+      '/some-document.odt',
+      mockDataClient('some-document.odt', '2023-01-01', '2023-02-02'),
+    )
 
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {
@@ -59,7 +65,11 @@ describe('generateDocumentDiory', () => {
   })
 
   it('generates document diory from docx', async () => {
-    const diory: IDiory = await generateDocumentDiory(fixtures, '/some-document.docx')
+    const diory: IDiory = await generateDocumentDiory(
+      fixtures,
+      '/some-document.docx',
+      mockDataClient('some-document.docx', '2023-01-01', '2023-02-02'),
+    )
 
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {

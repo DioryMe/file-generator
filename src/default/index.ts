@@ -1,31 +1,25 @@
-import { join } from 'path'
-import { readFile } from 'fs/promises'
+import { join } from 'path-browserify'
 
 import { Diory, IDiory } from '@diograph/diograph'
+import { IDataClient } from '@diograph/local-client'
 
 import { getCid } from '../utils/getCid'
-
-import { getText } from './text'
 import { getImage } from './image'
-import { getCreate } from './created'
-import { getModified } from './modified'
 
 export async function generateDefaultDiory(
-  rootPath: string,
+  rootUrl: string,
   subPath: string,
+  client: IDataClient,
   fileContent?: Buffer,
 ): Promise<IDiory> {
-  const filePath = join(rootPath, subPath)
+  const filePath = join(rootUrl, subPath)
   if (!fileContent) {
-    fileContent = await readFile(filePath)
+    fileContent = await client.readItem(filePath)
   }
 
   const id: string = await getCid(fileContent)
-  const text: string | undefined = getText(filePath)
   const image: string | undefined = getImage()
-  const date: string | undefined = getCreate(filePath)
-  const created: string | undefined = getCreate(filePath)
-  const modified: string | undefined = getModified(filePath)
+  const { name, created, modified } = client.getMetadata(filePath)
 
-  return new Diory({ id, text, image, date, created, modified })
+  return new Diory({ id, text: name, image, date: created, created, modified })
 }

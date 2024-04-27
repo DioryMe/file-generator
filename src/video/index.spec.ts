@@ -1,6 +1,6 @@
-import { join } from 'path'
+import { join } from 'path-browserify'
 import { IDiory } from '@diograph/diograph'
-import { mockFsStatSync } from '../testUtils'
+import { mockDataClient } from '../testUtils'
 import { generateMetadata } from './utils/generateMetadata'
 
 import { generateVideoDiory } from './index'
@@ -10,17 +10,16 @@ const { execFileReturnObjectFixture } = require('./utils/ffmpeg-return-object-fi
 jest.mock('./utils/generateMetadata')
 const mockGenerateMetadata = generateMetadata as jest.Mock
 
-const fixtures = join(__dirname, '__fixtures__')
+const fixtureUrl = join(__dirname, '__fixtures__')
+
 describe('generateImageDiory', () => {
   beforeEach(() => {
     mockGenerateMetadata.mockResolvedValue({
-      thumbnailBuffer: join(fixtures, 'some-video-thumbnail.jpg'),
+      thumbnailBuffer: join(fixtureUrl, 'some-video-thumbnail.jpg'),
       metadataString: execFileReturnObjectFixture.stderr,
     })
 
     jest.spyOn(Math, 'random').mockReturnValue(0)
-
-    mockFsStatSync('2023-01-01', '2023-02-02')
 
     process.env.FFMPEG_PATH = 'some-path'
   })
@@ -30,7 +29,11 @@ describe('generateImageDiory', () => {
   })
 
   it('generates video diory from mp4', async () => {
-    const diory: IDiory = await generateVideoDiory(fixtures, '/some-video.mp4')
+    const diory: IDiory = await generateVideoDiory(
+      fixtureUrl,
+      '/some-video.mp4',
+      mockDataClient('some-video.mp4', '2023-01-01', '2023-02-02'),
+    )
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {
         "created": "2023-01-01T00:00:00.000Z",

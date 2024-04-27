@@ -1,17 +1,19 @@
-import { fromFile } from 'file-type'
-const { join } = require('path')
+const { join } = require('path-browserify')
+import { IDataClient } from '@diograph/local-client'
 
 export async function resolveFileType(
-  rootPath: string,
+  rootUrl: string,
   subPath: string,
+  client: IDataClient,
 ): Promise<string | undefined> {
-  const filePath = join(rootPath, subPath)
-  const fileMimeType = await fromFile(filePath)
-  if (!fileMimeType?.mime) {
+  const fileUrl = join(rootUrl, subPath)
+  const { mime } = await client.getFileType(fileUrl)
+
+  if (!mime) {
     return
   }
 
-  const fileType: string = fileMimeType.mime.split('/')[0]
+  const fileType: string = mime.split('/')[0]
   switch (fileType) {
     case 'image':
       return 'image'

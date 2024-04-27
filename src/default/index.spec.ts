@@ -1,6 +1,7 @@
-import { join } from 'path'
+import { join } from 'path-browserify'
 import { IDiory } from '@diograph/diograph'
-import { mockFsStatSync } from '../testUtils'
+
+import { mockDataClient } from '../testUtils'
 
 import { generateDefaultDiory } from './index'
 
@@ -8,12 +9,14 @@ const fixtures = join(__dirname, '__fixtures__')
 describe('generateDefaultDiory', () => {
   beforeEach(() => {
     jest.spyOn(Math, 'random').mockReturnValue(0)
-
-    mockFsStatSync('2023-01-01', '2023-02-02')
   })
 
   it('generates document diory from file', async () => {
-    const diory: IDiory = await generateDefaultDiory(fixtures, '/some-file.txt')
+    const diory: IDiory = await generateDefaultDiory(
+      fixtures,
+      '/some-file.txt',
+      mockDataClient('some-file.txt', '2023-01-01', '2023-02-02'),
+    )
 
     expect(diory.toObject()).toMatchInlineSnapshot(`
       {
