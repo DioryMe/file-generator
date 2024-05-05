@@ -1,6 +1,6 @@
 {
   "name": "@diograph/file-generator",
-  "version": "0.1.2-rc9",
+  "version": "0.1.2-rc11",
   "description": "Generates diory from file",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,17 +20,16 @@
   "dependencies": {
     "@diograph/diograph": "0.3.0-rc11",
     "@diograph/file-generator": "^0.1.2-rc9",
-    "@diograph/local-client": "^0.3.0-rc4",
+    "@diograph/local-client": "^0.3.0-rc6",
+    "@diory/client-js": "^0.2.0-rc7",
     "@types/path-browserify": "^1.0.2",
     "exifreader": "^4.8.1",
     "multiformats": "^9.6.0",
     "path-browserify": "^1.0.1",
-    "sharp": "0.31.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.2.2",
-    "@types/sharp": "0.31.0",
     "@types/uuid": "^9.0.0",
     "babel-jest": "^29.3.1",
     "jest": "^29.3.1",

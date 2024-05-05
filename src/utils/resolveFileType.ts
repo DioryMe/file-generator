@@ -1,5 +1,5 @@
 const { join } = require('path-browserify')
-import { IDataClient } from '@diograph/local-client'
+import { IDataClient } from '@diory/client-js'
 
 export async function resolveFileType(
   rootUrl: string,
