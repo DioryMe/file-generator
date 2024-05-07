@@ -1,4 +1,4 @@
-import { IDataObject } from '@diograph/diograph/types'
+import { IDataObject } from '@diograph/diograph'
 
 export interface ImageObject extends IDataObject {
   '@context': string

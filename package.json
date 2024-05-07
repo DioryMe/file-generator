@@ -1,9 +1,12 @@
 {
   "name": "@diograph/file-generator",
-  "version": "v0.1.2-rc5",
+  "version": "0.1.2-rc12",
   "description": "Generates diory from file",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "author": "Olli-Pekka Pohjola <op@diory.me>, Jouni Alanen <jouni@diory.me>",
   "license": "MIT",
   "scripts": {
@@ -12,20 +15,22 @@
     "prettier": "prettier --write .",
     "test": "jest --verbose",
     "test-watch": "jest --watch",
-    "prepare": "yarn prettier && yarn build"
+    "prepare": "yarn test && yarn prettier && yarn build"
   },
   "dependencies": {
-    "@diograph/diograph": "^0.2.2-rc2",
-    "@types/sharp": "0.31.0",
-    "@types/uuid": "^9.0.0",
+    "@diograph/diograph": "0.3.0-rc11",
+    "@diograph/file-generator": "^0.1.2-rc9",
+    "@diograph/local-client": "^0.3.0-rc6",
+    "@diory/client-js": "^0.2.0-rc7",
+    "@types/path-browserify": "^1.0.2",
     "exifreader": "^4.8.1",
-    "file-type": "^16.4.0",
     "multiformats": "^9.6.0",
-    "sharp": "0.31.2",
+    "path-browserify": "^1.0.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.2.2",
+    "@types/uuid": "^9.0.0",
     "babel-jest": "^29.3.1",
     "jest": "^29.3.1",
     "prettier": "^2.5.1",

@@ -1,32 +1,35 @@
-import { join } from 'path'
-import { IDiory } from '@diograph/diograph/types'
+import { join } from 'path-browserify'
+
+import { IDataClient } from '@diory/client-js'
+import { IDiory } from '@diograph/diograph'
 
 import { ifDefined } from '../utils/ifDefined'
-import { generateMetadata } from './utils/generateMetadata'
 
 import { generateDefaultDiory } from '../default'
-import { getImage } from './image'
-import { getDate } from './date'
-import { getLatlng } from './latlng'
 import { getData } from './data'
+import { VideoObject } from './schema-types'
 
-export async function generateVideoDiory(rootPath: string, subPath: string): Promise<IDiory> {
-  const filePath = join(rootPath, subPath)
+export async function generateVideoDiory(rootUrl: string, subPath: string, client: IDataClient) {
+  const fileUrl = join(rootUrl, subPath)
+  const { mime } = await client.getFileType(fileUrl)
 
-  const text = undefined
-  const defaultDiory = (await generateDefaultDiory(rootPath, subPath)).update({ text }, false)
+  const diory: IDiory = await generateDefaultDiory(rootUrl, subPath, client)
 
-  try {
-    const { thumbnailBuffer, metadataString } = await generateMetadata(filePath)
+  if (client.getVideoMetadata) {
+    const { thumbnail, created, duration, latlng } = await client.getVideoMetadata(fileUrl)
+    const data: VideoObject[] = await getData(diory.id, duration, mime)
 
-    const image: string | undefined = thumbnailBuffer && (await getImage(thumbnailBuffer))
-    const date: string | undefined = getDate(metadataString)
-    const latlng: string | undefined = getLatlng(metadataString)
-    const data: any[] = await getData(rootPath, subPath, metadataString, defaultDiory.id)
-
-    return defaultDiory.update(ifDefined({ image, date, latlng, data }), false)
-  } catch (error) {
-    console.error(error)
-    return defaultDiory
+    diory.update(
+      ifDefined({
+        text: undefined,
+        image: thumbnail,
+        date: created,
+        latlng,
+        data,
+      }),
+      false,
+    )
   }
+
+  return diory
 }
