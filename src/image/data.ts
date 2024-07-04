@@ -9,8 +9,13 @@ function getWidth(tags: any): number | undefined {
   return tags['Image Width']?.value
 }
 
-export async function getData(rootPath: string, subPath: string, tags: any, cid: string) {
-  const { contentUrl, encodingFormat } = await getFileData(rootPath, subPath)
+export async function getData(
+  rootPath: string,
+  subPath: string,
+  tags: any,
+  cid: string,
+): Promise<ImageObject[]> {
+  const { encodingFormat } = await getFileData(rootPath, subPath)
 
   const schema: ImageObject = {
     '@context': 'https://schema.org',
