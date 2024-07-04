@@ -1,4 +1,4 @@
-import { IDiory } from '@diograph/diograph'
+import { IDiory } from '@diograph/diograph/types'
 import { generateDefaultDiory } from '../default'
 import { getData } from './data'
 import { DigitalDocument } from './schema-types'

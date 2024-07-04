@@ -1,4 +1,4 @@
-import { IDataObject } from '@diograph/diograph'
+import { IDataObject } from '@diograph/diograph/types'
 
 export interface VideoObject extends IDataObject {
   '@context': string
