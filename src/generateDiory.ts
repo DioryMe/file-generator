@@ -1,5 +1,5 @@
 import { IDiory } from '@diograph/diograph'
-import { IDataClient } from '@diory/client-js'
+import { IDataClient } from '@diograph/local-client'
 
 import { resolveFileType } from './utils/resolveFileType'
 
