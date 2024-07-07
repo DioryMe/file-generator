@@ -1,4 +1,4 @@
-import { IDiory } from '@diograph/diograph'
+import { IDiory } from '@diory/types'
 import { mockDataClient } from '../testUtils'
 
 import { generateImageDiory } from './index'

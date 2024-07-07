@@ -1,4 +1,4 @@
-import { IDataObject } from '@diograph/diograph'
+import { IDataObject } from '@diory/types'
 
 export interface DigitalDocument extends IDataObject {
   '@context': string

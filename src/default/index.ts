@@ -1,7 +1,7 @@
 import { join } from 'path-browserify'
 
-import { Diory, IDiory } from '@diograph/diograph'
-import { IDataClient } from '@diory/client-js'
+import { Diory } from '@diograph/diograph'
+import { IDiory, IDataClient } from '@diory/types'
 
 import { getCid } from '../utils/getCid'
 import { getImage } from './image'

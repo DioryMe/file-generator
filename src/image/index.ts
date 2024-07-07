@@ -1,7 +1,7 @@
 import { join } from 'path-browserify'
 
-import { IDiory } from '@diograph/diograph'
-import { IDataClient } from '@diory/client-js'
+import { IDiory } from '@diory/types'
+import { IDataClient } from '@diory/types'
 
 import { ifDefined } from '../utils/ifDefined'
 import { generateDefaultDiory } from '../default'
