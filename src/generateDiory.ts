@@ -1,4 +1,4 @@
-import { IDiory } from '@diory/types'
+import { IDiory } from '@diograph/diograph'
 import { IDataClient } from '@diory/types'
 
 import { resolveFileType } from './utils/resolveFileType'

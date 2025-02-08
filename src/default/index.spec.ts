@@ -1,5 +1,5 @@
 import { join } from 'path-browserify'
-import { IDiory } from '@diory/types'
+import { IDiory } from '@diograph/diograph'
 
 import { mockDataClient } from '../testUtils'
 

@@ -1,14 +1,14 @@
 import { VideoObject } from './schema-types'
 
 export async function getData(
-  cid: string,
+  contentUrl: string,
   duration?: string,
   mime?: string,
 ): Promise<VideoObject[]> {
   const schema: VideoObject = {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
-    contentUrl: cid,
+    contentUrl,
     encodingFormat: mime || 'application/octet-stream',
     ...(duration && { duration }),
   }

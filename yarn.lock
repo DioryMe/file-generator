@@ -298,12 +298,13 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@diograph/diograph@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@diograph/diograph/-/diograph-0.3.0.tgz#75dff52e5b3b78f077fe4c63496e3fc18aa53a24"
-  integrity sha512-co7qY7A2sTUmp4SZ6utuvQ8gzAnPR+wJiBajUPpVbwD22GQ+qWfyEMsidcHI3U3aXasN76HI9lV/Oxq+72Kf0A==
+"@diograph/diograph@0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@diograph/diograph/-/diograph-0.4.3.tgz#76b51cbc4e6006acf5c31417c4553ed5fbe5c2f2"
+  integrity sha512-qczndQiDw64zDTX078nc7MYgEkMnxlnBQfGmpcu/p5tdVlFjy8x4sP7tlQc7jP4wGdQMnRdWeEg3VgSC+jaiIQ==
   dependencies:
     ajv "^8.12.0"
+    path-browserify "^1.0.1"
     uuid "^8.3.2"
 
 "@diograph/local-client@^0.4.1":

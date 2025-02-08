@@ -1,6 +1,6 @@
 import { join } from 'path-browserify'
 
-import { IDiory } from '@diory/types'
+import { IDiory } from '@diograph/diograph'
 import { IDataClient } from '@diory/types'
 
 import { ifDefined } from '../utils/ifDefined'
@@ -32,7 +32,7 @@ export async function generateImageDiory(
   const date: string | undefined = getDate(tags)
   const latlng: string | undefined = getLatlng(tags)
   const created: string | undefined = getCreated(tags)
-  const data: ImageObject[] = await getData(tags, defaultDiory.id, mime)
+  const data: ImageObject[] = await getData(subPath, tags, mime)
 
   return defaultDiory
     .update({ text }, false)
