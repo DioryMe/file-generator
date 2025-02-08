@@ -17,7 +17,7 @@ export async function generateVideoDiory(rootUrl: string, subPath: string, clien
 
   if (client.getVideoMetadata) {
     const { thumbnail, created, duration, latlng } = await client.getVideoMetadata(fileUrl)
-    const data: VideoObject[] = await getData(diory.id, duration, mime)
+    const data: VideoObject[] = await getData(subPath, duration, mime)
 
     diory.update(
       ifDefined({

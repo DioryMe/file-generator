@@ -1,11 +1,11 @@
 import { DigitalDocument } from './schema-types'
 
-export async function getData(cid: string, mime?: string): Promise<DigitalDocument[]> {
+export function getData(contentUrl: string, encodingFormat?: string): DigitalDocument[] {
   const schema: DigitalDocument = {
     '@context': 'https://schema.org',
     '@type': 'DigitalDocument',
-    contentUrl: cid,
-    encodingFormat: mime || 'application/octet-stream',
+    contentUrl,
+    encodingFormat: encodingFormat || 'application/octet-stream',
   }
 
   return [schema]

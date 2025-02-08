@@ -16,7 +16,7 @@ export async function generateDocumentDiory(
 
   const defaultDiory: IDiory = await generateDefaultDiory(rootUrl, subPath, client)
 
-  const data: DigitalDocument[] = await getData(defaultDiory.id, mime)
+  const data: DigitalDocument[] = getData(subPath, mime)
 
   return defaultDiory.update({ data }, false)
 }

@@ -24,7 +24,7 @@ describe('generateDocumentDiory', () => {
           {
             "@context": "https://schema.org",
             "@type": "DigitalDocument",
-            "contentUrl": "bafkreifplif2mdxkjhdsfxe6sxynidybwxkvadck5yazt2wabdidfadq34",
+            "contentUrl": "/some-document.pdf",
             "encodingFormat": "application/pdf",
           },
         ],
@@ -51,7 +51,7 @@ describe('generateDocumentDiory', () => {
           {
             "@context": "https://schema.org",
             "@type": "DigitalDocument",
-            "contentUrl": "bafkreibmmzu26ak6fu24st2yofgulmv6heqwoqhrwewyfs3wcv25psk2cq",
+            "contentUrl": "/some-document.odt",
             "encodingFormat": "application/vnd.oasis.opendocument.text",
           },
         ],
@@ -78,7 +78,7 @@ describe('generateDocumentDiory', () => {
           {
             "@context": "https://schema.org",
             "@type": "DigitalDocument",
-            "contentUrl": "bafkreieqnsym3c5aoh3pyeyy6qb2ib5rkid4dki4qepw3m4lzpgbzszyaq",
+            "contentUrl": "/some-document.docx",
             "encodingFormat": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
           },
         ],
