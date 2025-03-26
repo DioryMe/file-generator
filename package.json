@@ -1,6 +1,6 @@
 {
   "name": "@diograph/file-generator",
-  "version": "0.4.0-rc1",
+  "version": "0.4.0-rc2",
   "description": "Generates diory from file",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,7 +18,7 @@
     "prepare": "yarn test && yarn prettier && yarn build"
   },
   "dependencies": {
-    "@diograph/diograph": "^0.3.0",
+    "@diograph/diograph": "0.4.3-rc14",
     "exifreader": "^4.8.1",
     "multiformats": "^9.6.0",
     "path-browserify": "^1.0.1",
